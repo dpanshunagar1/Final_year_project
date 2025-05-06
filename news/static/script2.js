@@ -96,6 +96,7 @@ const loadArticles = async (url) => {
 	isLoading = true;
 	try {
 		const response = await fetch(url);
+		
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
@@ -158,13 +159,11 @@ const handleSearch = async () => {
 const loadCategory = async (filterType, filterValue) => {
 	isSearchActive = false; // Reset search flag
 	articleContainer.innerHTML = ""; // Clear previous articles
-	// Assuming your category API endpoint will look something like this:
-	const categoryUrl = `/api/articles/?${encodeURIComponent(
-		filterType
-	)}=${encodeURIComponent(filterValue)}`;
+	const categoryUrl = `/api/articles/category/${encodeURIComponent(
+		filterValue
+	)}/`;
 	nextPageUrl = categoryUrl;
-	loadArticles(nextPageUrl);
-	// You'll need to implement the backend view (ArticleList) to handle this filtering
+	await loadArticles(nextPageUrl); // Make sure to use await since loadArticles is async
 };
 
 // Initial load
