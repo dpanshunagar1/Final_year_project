@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>News</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Material+Icons&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="{% static 'home.css' %}" />
+	</head>
+	<body>
+		<!-- Navbar Section -->
+		<div class="navbar">
+			<!-- Logo -->
+			<a href="#" class="logo" onclick="toggleSidebar()">NewsHub</a>
+
+			<!-- Search 'Bar -->
+			<div class="search-bar">
+				<input type="text" id="search-input" placeholder="Search news..." name="search-bar" />
+			</div>
+
+			<!-- Theme Switch Button -->
+			<div class="nav-buttons">
+				
+				<button class="btn" id="darkModeToggle">
+					<span class="material-icons">dark_mode</span> Switch Theme
+				</button>
+			</div>
+		</div>
+
+		<!-- Sidebar Section -->
+		<div class="sidebar" id="sidebar">
+			<h2>Sidebar Menu</h2>
+			<ul>
+				<!-- Sources -->
+				<!-- Genre -->
+				<li>
+					<button class="collapsible">Genre</button>
+					<ul class="sublist">
+						<li onclick="loadCategory('Genre', 'politics')">Politics</li>
+						<li onclick="loadCategory('Genre', 'sports')">Sports</li>
+						<li onclick="loadCategory('Genre', 'technology')">Technology</li>
+						<li onclick="loadCategory('Genre', 'entertainment')">
+							Entertainment
+						</li>
+					</ul>
+				</li>
+				<!-- Region -->
+				
+			</ul>
+		</div>
+
+		<!-- Main Content Section -->
+		<div class="loading" style="display: none">
+			<p>Loading...</p>
+			<!-- You can replace this with a spinner if needed -->
+		</div>
+
+		<!-- Top News Section -->
+		<div class="main-content">
+			<h2 class="section-title">Trending news</h2>
+			<div class="articles">
+				<!-- Articles will be dynamically loaded here -->
+			</div>
+		</div>
+
+		<!-- <script src="{% static 'script.js' %}"></script> -->
+		<script src="{% static 'script2.js' %}"></script>
+	</body>
+</html>

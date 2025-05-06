@@ -1,0 +1,446 @@
+:root {
+	/* Base Colors */
+	--color-background: #ffffff;
+	--color-surface: #f8f9fa;
+	--color-text-primary: #212529;
+	--color-text-secondary: #495057;
+	--color-border: #e9ecef;
+	--color-hover: #dee2e6;
+
+	/* Primary and Secondary Colors */
+	--color-primary: #0d6efd; /* Bright Blue */
+	--color-secondary: #6c757d; /* Neutral Gray */
+
+	/* Accent Colors */
+	--color-accent-green: #198754; /* Green */
+	--color-accent-red: #dc3545; /* Red */
+	--color-accent-yellow: #ffc107; /* Yellow */
+
+	/* Extra Colors */
+	--color-primary-dark: #0a58ca; /* Darker Blue */
+	--color-secondary-light: #adb5bd; /* Lighter Gray */
+
+	/* Neutral Colors */
+	--color-lightest: #f8f9fa;
+	--color-light: #e9ecef;
+	--color-medium: #ced4da;
+	--color-dark: #343a40;
+	--color-darkest: #212529;
+}
+
+body.darkmode {
+	/* Base Colors */
+	--color-background: #212529;
+	--color-surface: #343a40;
+	--color-text-primary: #f8f9fa;
+	--color-text-secondary: #adb5bd;
+	--color-border: #495057;
+	--color-hover: #495057;
+
+	/* Primary and Secondary Colors */
+	--color-primary: #0d6efd; /* Bright Blue */
+	--color-secondary: #6c757d; /* Neutral Gray */
+
+	/* Accent Colors */
+	--color-accent-green: #198754; /* Green */
+	--color-accent-red: #dc3545; /* Red */
+	--color-accent-yellow: #ffc107; /* Yellow */
+
+	/* Extra Colors */
+	--color-primary-dark: #0a58ca; /* Darker Blue */
+	--color-secondary-light: #adb5bd; /* Lighter Gray */
+
+	/* Neutral Colors */
+	--color-lightest: #495057;
+	--color-light: #343a40;
+	--color-medium: #212529;
+	--color-dark: #121417;
+	--color-darkest: #0d0f11;
+}
+
+body {
+	margin: 0;
+	background-color: var(--color-background);
+	color: var(--color-text-primary);
+	overflow-x: hidden;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+a,
+span {
+	text-decoration: none;
+}
+
+p {
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+}
+
+.main-content.sidebar-open {
+	margin-left: 300px;
+	transition: margin-left 0.3s;
+}
+
+/* navbar css  */
+
+.navbar {
+	position: sticky;
+	top: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 15px 20px;
+	background: var(--color-background);
+	/* border-radius: 10px; */
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+	max-width: 100%;
+	border: 1px solid var(--color-border);
+	transition: margin-left 0.3s;
+}
+
+.nav-buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	border-radius: 5px;
+}
+
+.logo {
+	font-weight: bold;
+	color: var(--color-text-primary);
+	text-decoration: none;
+	cursor: pointer;
+	font-family: "Oswald", sans-serif;
+	font-size: 24px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+/* search bar css */
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	width: 50%;
+	max-width: 600px;
+}
+
+.search-bar input {
+	width: 100%;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: var(--color-hover);
+	border: 1px solid var(--color-text-secondary);
+	font-size: 16px;
+	outline: none;
+	transition: box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.material-icons {
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+/* Sidebar css */
+
+.sidebar {
+	position: fixed;
+	top: 40;
+	left: -260px;
+	width: 250px;
+	height: 90vh;
+	background-color: var(--color-background);
+	color: var(--color-text-primary);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+	overflow-y: auto;
+	transition: left 0.3s;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.sidebar.open {
+	left: 0;
+}
+
+.sidebar h2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+	color: var(--color-text-primary);
+}
+
+.sidebar ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.sidebar li {
+	margin: 8px 0;
+}
+
+.collapsible {
+	background: none;
+	border: none;
+	color: var(--color-text-primary);
+	text-align: left;
+	padding: 8px 10px;
+	width: 100%;
+	font-size: 16px;
+	cursor: pointer;
+	outline: none;
+	font-weight: bold;
+}
+
+.collapsible:hover {
+	background-color: var(--color-hover);
+}
+
+.sublist {
+	display: none; /* Initially hidden */
+	list-style-type: none;
+	margin-left: 20px;
+	padding: 0;
+}
+
+.sublist li {
+	margin: 5px 0;
+	cursor: pointer;
+}
+
+.sublist li:hover {
+	color: var(--color-hover);
+	text-decoration: underline;
+}
+
+/* Main Content Section */
+
+.main-content {
+	padding: 20px;
+	padding-top: 0px;
+	border-radius: 10px;
+	margin: 1rem;
+	margin-top: 5px;
+	width: 1fr; /* Take remaining space after sidebar */
+	background-color: var(--color-background);
+	overflow-y: auto;
+}
+
+.section-title {
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/* articles css */
+
+.articles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: center;
+}
+
+.article-card {
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	min-height: 350px;
+}
+
+.article-card:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.article-image {
+	width: 100%;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.article-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	padding: 15px;
+}
+
+.article-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	/* font-size: 20px; */
+	/* font-weight: bold; */
+	/* margin-bottom: 10px; */
+}
+
+.article-summary {
+	display: -webkit-box;
+	/* font-size: 14px; */
+	color: var(--color-text-secondary);
+	/* margin-bottom: 15px; */
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.read-more {
+	font-size: 14px;
+	color: var(--color-text-secondary);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.read-more:hover {
+	text-decoration: underline;
+}
+
+.article-meta {
+	font-size: 12px;
+	color: var(--color-text-secondary);
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.article-meta small {
+	color: #888; /* Lighter color for the source and time */
+}
+
+.article-meta small:first-child {
+	margin-right: 10px;
+}
+
+/* Button css */
+
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 20px;
+	background-color: var(--color-background);
+	color: var(--color-text-primary);
+	font-size: 16px;
+	cursor: pointer;
+	text-decoration: none;
+	transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+.btn:hover {
+	background-color: var(--color-hover); /* Darker blue on hover */
+}
+
+.btn:focus {
+	outline: none; /* Remove outline on focus */
+}
+
+/* pagination section  */
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	font-family: Arial, sans-serif;
+}
+
+.pagination a,
+.pagination span {
+	color: #007bff;
+	text-decoration: none;
+	margin: 0 5px;
+	padding: 8px 12px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.pagination a:active,
+.pagination span.current {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
+	cursor: default;
+}
+
+.pagination span {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 8px 12px;
+	color: #555;
+	cursor: default;
+}
+
+.pagination a.disabled {
+	color: #ccc;
+	pointer-events: none;
+	border-color: #eee;
+}
+
+/* footer  section */
+
+
+/* Media Queries for Small Screens */
+@media (max-width: 768px) {
+	.navbar {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 10px 15px;
+	}
+
+	.logo {
+		font-size: 20px;
+		letter-spacing: 1.5px;
+	}
+
+	.search-bar {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.search-bar input {
+		font-size: 14px;
+		padding: 8px;
+		border-radius: 15px;
+	}
+
+	.nav-buttons {
+		display: none; /* Hide buttons on smaller screens */
+	}
+}
+
+@media (max-width: 480px) {
+	.navbar {
+		padding: 8px 10px;
+	}
+
+	.logo {
+		font-size: 18px;
+		letter-spacing: 1px;
+	}
+
+	.search-bar input {
+		font-size: 12px;
+		padding: 6px;
+	}
+}
