@@ -1,6 +1,50 @@
+document.addEventListener("DOMContentLoaded", () => {
+	const darkMode = localStorage.getItem("darkmode");
+	if (darkMode === "enabled") {
+		document.body.classList.add("darkmode");
+	}
+});
+
+// Toggle dark mode and save preference
+const toggleButton = document.getElementById("darkModeToggle");
+toggleButton.addEventListener("click", () => {
+	const isDarkMode = document.body.classList.toggle("darkmode");
+	if (isDarkMode) {
+		localStorage.setItem("darkmode", "enabled");
+	} else {
+		localStorage.setItem("darkmode", "disabled");
+	}
+});
 
 
 
+function toggleSidebar() {
+	const sidebar = document.getElementById("sidebar");
+	const body = document.querySelector(".main-content");
+
+	if (sidebar.classList.contains("open")) {
+		sidebar.classList.remove("open");
+		body.classList.remove("sidebar-open");
+	} else {
+		sidebar.classList.add("open");
+		body.classList.add("sidebar-open");
+	}
+}
+
+// Add event listeners for collapsible buttons
+document.addEventListener("DOMContentLoaded", () => {
+	const collapsibles = document.querySelectorAll(".collapsible");
+	collapsibles.forEach((button) => {
+		button.addEventListener("click", () => {
+			const sublist = button.nextElementSibling;
+			if (sublist.style.display === "block") {
+				sublist.style.display = "none";
+			} else {
+				sublist.style.display = "block";
+			}
+		});
+	});
+});
 
 const articleContainer = document.querySelector(".articles");
 const searchInput = document.getElementById("search-input");
@@ -64,7 +108,7 @@ const loadArticles = async (url) => {
 				const articleElement = createArticleElement(article);
 				articleContainer.appendChild(articleElement);
 			});
-			nextPageUrl = initialArticleUrl + '?page=' +nextPage; // Update nextPageUrl with the URL from the backend response
+			nextPageUrl = initialArticleUrl + "?page=" + nextPage; // Update nextPageUrl with the URL from the backend response
 		} else if (!isLoading) {
 			const noArticlesMessage = document.createElement("p");
 			noArticlesMessage.textContent = isSearchActive
@@ -83,8 +127,6 @@ const loadArticles = async (url) => {
 		isLoading = false;
 	}
 };
-
-
 
 const handleScroll = () => {
 	if (!nextPageUrl || isSearchActive) return; // Don't load more if no next page or if search is active
