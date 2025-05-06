@@ -5,12 +5,12 @@ from .serializers import ArticleSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.db.models import Q
-from rest_framework.pagination import PageNumberPagination
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 def home_view(request):
     return render(request, 'home/home.html')
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class ArticleList(generics.ListAPIView):
     serializer_class = ArticleSerializer
@@ -45,20 +45,6 @@ class ArticleList(generics.ListAPIView):
 
 
 
-# class ArticleList(generics.ListAPIView):
-#     queryset = Article.objects.all().order_by('?','-published_date', '-added_date')  # Get all articles, ordered by date
-#     serializer_class = ArticleSerializer
-
-class ArticleDetail(generics.RetrieveAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
-
-
-class ArticleListPagination(PageNumberPagination):
-    page_size = 10
-
-
 
 @api_view(['GET'])
 def article_list_by_keyword(request):
@@ -79,3 +65,42 @@ def article_list_by_keyword(request):
     paginated_queryset = paginator.paginate_queryset(queryset, request)
     serializer = ArticleSerializer(paginated_queryset, many=True)
     return paginator.get_paginated_response(serializer.data)
+
+
+
+
+class ArticleListByCategory(generics.ListAPIView):
+    serializer_class = ArticleSerializer
+
+    def get_queryset(self, category):
+        print(f"Category: {category}")
+        return Article.objects.filter(category=category).order_by('?', '-published_date', '-added_date')
+    
+
+    def list(self, request, category=None, *args, **kwargs):
+        if not category:
+            return Response({"error": "Category parameter is required."}, status=400)
+        
+        queryset = self.get_queryset(category)
+        
+        page = request.GET.get('page')
+        paginator = Paginator(queryset, 10)  # Show 10 articles per page (you can adjust this)
+
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+
+        serializer = self.serializer_class(articles, many=True)
+    
+
+        return Response({
+            'count': paginator.count,
+            'num_pages': paginator.num_pages,
+            'current_page': articles.number,
+            'next': articles.has_next() and articles.next_page_number(),
+            'previous': articles.has_previous() and articles.previous_page_number(),
+            'results': serializer.data
+        })
