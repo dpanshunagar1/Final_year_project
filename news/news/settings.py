@@ -27,7 +27,10 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', cast=str, default=get_random_secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =config('DJANGO_DEBUG',cast=bool , default=False)  
 
-ALLOWED_HOSTS = ["dpanshu.com"]
+ALLOWED_HOSTS = [
+    ".vercel.app"
+    , "localhost", 
+    ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.dpanshu.com",
@@ -89,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+} 
 
 
 # Password validation
@@ -148,3 +151,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # # Results backend (optional)
 # CELERY_RESULT_BACKEND = 'django-db'
+
+
+# import dj_database_url
+
+# DATABASES ={
+#     'default' :  dj_database_url.parse(config('EXTERNAL_DATABASE_URL', default='sqlite:///db.sqlite3'), conn_max_age=600)
+# }
