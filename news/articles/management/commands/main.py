@@ -1,4 +1,3 @@
-# articles/management/commands/process_feeds.py
 from django.core.management.base import BaseCommand
 from articles.models import RSSFeed, Article
 import requests
@@ -109,9 +108,7 @@ class Command(BaseCommand):
             feed_source_name = feed.source_name
             feed_category = feed.category
 
-            # self.stdout.write(self.style(f'Processing feed: {feed_name} ({feed_url})'))
-            # self.stdout.write(self.style(f'  Source Name (Model): {feed_source_name}'))
-            # self.stdout.write(self.style(f'  Category (Model): {feed_category}'))
+            
 
             self.process_feed(feed)
 

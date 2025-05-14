@@ -103,13 +103,14 @@ const loadArticles = async (url) => {
 		const data = await response.json();
 		const articles = isSearchActive ? data.results : data.results; // Ensure we are always using data.results
 		const nextPage = data.next;
+		const urlnext = data.url;
 
 		if (articles && articles.length > 0) {
 			articles.forEach((article) => {
 				const articleElement = createArticleElement(article);
 				articleContainer.appendChild(articleElement);
 			});
-			nextPageUrl = initialArticleUrl + "?page=" + nextPage; // Update nextPageUrl with the URL from the backend response
+			nextPageUrl = urlnext + "?page=" + nextPage; // Update nextPageUrl with the URL from the backend response
 		} else if (!isLoading) {
 			const noArticlesMessage = document.createElement("p");
 			noArticlesMessage.textContent = isSearchActive
