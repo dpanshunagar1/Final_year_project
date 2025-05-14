@@ -349,55 +349,6 @@ p {
 	outline: none; /* Remove outline on focus */
 }
 
-/* pagination section  */
-.pagination {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 20px;
-	font-family: Arial, sans-serif;
-}
-
-.pagination a,
-.pagination span {
-	color: #007bff;
-	text-decoration: none;
-	margin: 0 5px;
-	padding: 8px 12px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	font-size: 14px;
-	transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination a:hover {
-	background-color: #007bff;
-	color: #fff;
-}
-
-.pagination a:active,
-.pagination span.current {
-	background-color: #007bff;
-	color: #fff;
-	border-color: #007bff;
-	cursor: default;
-}
-
-.pagination span {
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	padding: 8px 12px;
-	color: #555;
-	cursor: default;
-}
-
-.pagination a.disabled {
-	color: #ccc;
-	pointer-events: none;
-	border-color: #eee;
-}
-
-/* footer  section */
 
 
 /* Media Queries for Small Screens */
