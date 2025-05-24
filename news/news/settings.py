@@ -25,10 +25,10 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', cast=str, default=get_random_secret_key
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =config('DJANGO_DEBUG',cast=bool , default=False)  
+DEBUG =config('DJANGO_DEBUG', cast=bool , default=False)  
 
 ALLOWED_HOSTS = [
-    ".vercel.app"
+    ".onrender.com"
     , "localhost", 
     ]
 
@@ -132,8 +132,19 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR , 'static'),
     BASE_DIR / 'static'
 ]
+
+
+STORAGES = {
+    "default": {
+        "BACKEND" : "django.core.files.storage.FileSystemStorage"
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -142,16 +153,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# # Redis settings
-# CELERY_BROKER_URL = 'redis://localhost:6379/0'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
-# CELERY_BEAT_MAX_INTERVAL = 10
 
-# # Results backend (optional)
-# CELERY_RESULT_BACKEND = 'django-db'
 
 
 # import dj_database_url

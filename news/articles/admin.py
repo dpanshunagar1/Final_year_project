@@ -8,12 +8,12 @@ class ArticleAdmin(admin.ModelAdmin):
     actions = ['update_category', 'update_source_name']
 
     def update_category(self, request, queryset):
-        # Action to update the category of selected articles
+        
         queryset.update(category='technology')
         self.message_user(request, "Category updated successfully.")
 
     def update_source_name(self, request, queryset):
-        # Action to update the source name of selected articles
+        
         queryset.update(source_name='Updated Source')
         self.message_user(request, "Source name updated successfully.")
 

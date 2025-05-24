@@ -13,24 +13,24 @@ class Command(BaseCommand):
 
     def normalize_article(self ,entry,source, category):
         try:
-            # Extract title
+        
             title = entry.get('title', '').strip()
 
-            # Extract URL
+            
             url = entry.get('link') or entry.get('id') or ''
             url = url.strip()
 
             description = entry.get('summary', '').strip()
             soup = BeautifulSoup(description, 'html.parser')
 
-            # Remove all <img> tags from the description
+            
             for img_tag in soup.find_all('img'):
                 img_tag.decompose()
 
-            # Get the cleaned description text
+            
             cleaned_description = soup.get_text().strip()
 
-            # Extract content (fallback to description)
+           
             content = ''
             if 'content' in entry:
                 if isinstance(entry['content'], list) and len(entry['content']) > 0:
@@ -40,11 +40,11 @@ class Command(BaseCommand):
             if not content:
                 content = cleaned_description
 
-            # Extract published date
+           
             published_date = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
             
 
-            # Try to extract image URL from known fields
+           
             image_url = ''
             media_content = entry.get('media_content', [])
             if isinstance(media_content, list) and media_content:
@@ -63,22 +63,22 @@ class Command(BaseCommand):
                             image_url = enc.get('href', '')
                             break
 
-            # Try to parse an image from the summary or content (if HTML present)
+           
             if not image_url:
                 soup = BeautifulSoup(content or description, 'html.parser')
                 img_tag = soup.find('img')
                 if img_tag and img_tag.get('src'):
                     image_url = img_tag['src']
 
-            # Final check: skip if image URL is still not found
+           
             if not image_url or not image_url.startswith('http'):
                 return None
 
-            # Generate SHA-256 hash
+          
             hash_input = f"{title}{description}{url}".encode('utf-8')
             hash_val = hashlib.sha256(hash_input).hexdigest()
 
-            # Return normalized article
+          
             return {
                 'title': title,
                 'url': url,
