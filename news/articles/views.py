@@ -27,7 +27,7 @@ class ArticleList(generics.ListAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         page = request.GET.get('page')
-        paginator = Paginator(queryset, 10)  # Show 10 articles per page (you can adjust this)
+        paginator = Paginator(queryset, 10) 
 
         try:
             articles = paginator.page(page)
@@ -68,7 +68,7 @@ class ArticleListByCategory(generics.ListAPIView):
         queryset = self.get_queryset(category)
         
         page = request.GET.get('page')
-        paginator = Paginator(queryset, 10)  # Show 10 articles per page (you can adjust this)
+        paginator = Paginator(queryset, 10) 
 
         try:
             articles = paginator.page(page)
@@ -117,26 +117,13 @@ def article_list_by_keyword(request):
     
     
 
-    # page = request.GET.get('page')
-    # paginator = Paginator(results, 40)
 
-    # try:
-    #     articles = paginator.page(page)
-    # except PageNotAnInteger:
-    #     articles = paginator.page(1)
-    # except EmptyPage:
-    #     articles = paginator.page(paginator.num_pages)
 
     serializer = ArticleSerializer(results, many=True)
 
     
 
     return Response({
-        # 'count': paginator.count,
-        # 'num_pages': paginator.num_pages,
-        # 'current_page': articles.number,
-        # 'next': articles.has_next() and articles.next_page_number(),
-        # 'previous': articles.has_previous() and articles.previous_page_number(),
         'results': serializer.data,
         'url': '/articles/search/'
     })

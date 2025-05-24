@@ -204,7 +204,7 @@ p {
 }
 
 .sublist {
-	display: none; /* Initially hidden */
+	display: none; 
 	list-style-type: none;
 	margin-left: 20px;
 	padding: 0;
@@ -228,7 +228,7 @@ p {
 	border-radius: 10px;
 	margin: 1rem;
 	margin-top: 5px;
-	width: 1fr; /* Take remaining space after sidebar */
+	width: 1fr;
 	background-color: var(--color-background);
 	overflow-y: auto;
 }
@@ -317,14 +317,14 @@ p {
 }
 
 .article-meta small {
-	color: #888; /* Lighter color for the source and time */
+	color: #888; 
 }
 
 .article-meta small:first-child {
 	margin-right: 10px;
 }
 
-/* Button css */
+
 
 .btn {
 	display: flex;
@@ -338,15 +338,15 @@ p {
 	font-size: 16px;
 	cursor: pointer;
 	text-decoration: none;
-	transition: background-color 0.3s; /* Smooth transition for background */
+	transition: background-color 0.3s; 
 }
 
 .btn:hover {
-	background-color: var(--color-hover); /* Darker blue on hover */
+	background-color: var(--color-hover);
 }
 
 .btn:focus {
-	outline: none; /* Remove outline on focus */
+	outline: none; 
 }
 
 
@@ -376,7 +376,7 @@ p {
 	}
 
 	.nav-buttons {
-		display: none; /* Hide buttons on smaller screens */
+		display: none; 
 	}
 }
 
