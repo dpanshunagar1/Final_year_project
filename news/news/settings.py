@@ -153,11 +153,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-
+# connecting to external database using external database url help keep my data on remote server 
 
 
 # import dj_database_url
 
 # DATABASES ={
-#     'default' :  dj_database_url.parse(config('EXTERNAL_DATABASE_URL', default='sqlite:///db.sqlite3'), conn_max_age=600)
+#     'default' :  dj_database_url.parse(config('EXTERNAL_DATABASE_URL', default='sqlite:/db.sqlite3'), conn_max_age=600)
 # }
