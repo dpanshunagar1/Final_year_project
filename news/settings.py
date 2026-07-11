@@ -25,11 +25,10 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', cast=str, default=get_random_secret_key
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =config('DJANGO_DEBUG', cast=bool , default=False)  
+DEBUG =config('DJANGO_DEBUG', cast=bool , default=True)  
 
 ALLOWED_HOSTS = [
     ".onrender.com"
-    , "localhost", 
     ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -61,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'news.urls'

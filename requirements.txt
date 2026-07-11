@@ -1,13 +1,18 @@
+a2wsgi==1.10.10
 asgiref==3.8.1
 beautifulsoup4==4.13.4
+bleach==6.4.0
 certifi==2025.4.26
 charset-normalizer==3.4.2
+click==8.4.2
+colorama==0.4.6
 dj-database-url==2.3.0
 Django==5.2
 djangorestframework==3.16.0
 feedparser==6.0.11
 fuzzywuzzy==0.18.0
-gunicorn==23.0.0
+git-filter-repo==2.47.0
+h11==0.16.0
 idna==3.10
 Levenshtein==0.27.1
 packaging==25.0
@@ -24,4 +29,6 @@ sqlparse==0.5.3
 typing_extensions==4.13.2
 tzdata==2025.2
 urllib3==2.4.0
+uvicorn==0.51.0
+webencodings==0.5.1
 whitenoise==6.9.0
